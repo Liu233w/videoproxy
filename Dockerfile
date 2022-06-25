@@ -4,6 +4,6 @@ WORKDIR /build
 RUN make build
 
 FROM alpine
-COPY --from build /build/videoproxy / 
+COPY --from=build /build/videoproxy / 
 ENTRYPOINT ["/videoproxy"]
 EXPOSE 80
