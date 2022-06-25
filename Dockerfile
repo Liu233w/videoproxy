@@ -1,9 +1,9 @@
 FROM golang as build
-COPY . /build
-WORKDIR /build
+WORKDIR /usr/src/app
+COPY . .
 RUN make build
 
 FROM alpine
-COPY --from=build /build/videoproxy / 
+COPY --from=build /usr/src/app/videoproxy / 
 ENTRYPOINT ["/videoproxy"]
 EXPOSE 80
