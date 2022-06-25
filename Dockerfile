@@ -6,4 +6,5 @@ RUN make build
 FROM alpine
 COPY --from=build /usr/src/app/videoproxy / 
 ENTRYPOINT ["/videoproxy"]
-EXPOSE 80
+ENV PORT 6060
+EXPOSE 6060
