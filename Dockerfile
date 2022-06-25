@@ -1,4 +1,9 @@
+FROM golang as build
+COPY . /build
+WORKDIR /build
+RUN make build
+
 FROM alpine
-ADD videoproxy /
+COPY --from build /build/videoproxy / 
 ENTRYPOINT ["/videoproxy"]
-EXPOSE 6060
+EXPOSE 80
